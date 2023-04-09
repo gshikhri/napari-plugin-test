@@ -1,0 +1,41 @@
+name: napari-plugin-test
+display_name:  Test Plugin
+contributions:
+  commands:
+    - id: napari-plugin-test.get_reader
+      python_name: napari_plugin_test._reader:napari_get_reader
+      title: Open data with  Test Plugin
+    - id: napari-plugin-test.write_multiple
+      python_name: napari_plugin_test._writer:write_multiple
+      title: Save multi-layer data with  Test Plugin
+    - id: napari-plugin-test.write_single_image
+      python_name: napari_plugin_test._writer:write_single_image
+      title: Save image data with  Test Plugin
+    - id: napari-plugin-test.make_qwidget
+      python_name: napari_plugin_test._widget:ExampleQWidget
+      title: Make example QWidget
+    - id: napari-plugin-test.make_magic_widget
+      python_name: napari_plugin_test._widget:example_magic_widget
+      title: Make example magic widget
+    - id: napari-plugin-test.make_func_widget
+      python_name: napari_plugin_test._widget:example_function_widget
+      title: Make example function widget
+  readers:
+    - command: napari-plugin-test.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
+  writers:
+    - command: napari-plugin-test.write_multiple
+      layer_types: ['image*','labels*']
+      filename_extensions: []
+    - command: napari-plugin-test.write_single_image
+      layer_types: ['image']
+      filename_extensions: ['.npy']
+  widgets:
+    - command: napari-plugin-test.make_qwidget
+      display_name: Example QWidget
+    - command: napari-plugin-test.make_magic_widget
+      display_name: Example Magic Widget
+    - command: napari-plugin-test.make_func_widget
+      autogenerate: true
+      display_name: Example Function Widget
